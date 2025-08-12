@@ -2,11 +2,209 @@
   {
     "name": "sahil",
     "email": "sahil@gmail.com",
-    "password": "sahil123"
+    "password": "sahil123",
+    "dashboard": {
+      "balance": {
+        "totalIncome": 50000,
+        "totalExpenses": 20000,
+        "netBalance": 30000
+      },
+      "quickAddDefaults": {
+        "categories": ["Food", "Rent", "Travel", "Entertainment", "Salary"],
+        "lastUsedDate": "2025-08-01"
+      },
+      "miniCharts": {
+        "incomeVsExpense": {
+          "income": 50000,
+          "expense": 20000
+        },
+        "recentTransactions": [2000, 1500, 3000, 1000, 4000, 2500, 1800]
+      }
+    },
+    "transactions": [
+      {
+        "date": "2025-08-01",
+        "description": "Salary",
+        "category": "Salary",
+        "amount": 50000
+      },
+      {
+        "date": "2025-08-02",
+        "description": "Groceries",
+        "category": "Food",
+        "amount": -2000
+      }
+    ],
+    "budgets": {
+      "Food": 8000,
+      "Rent": 15000,
+      "Travel": 5000,
+      "Entertainment": 4000
+    },
+    "reports": {
+      "categoryBreakdown": {},
+      "netWorthTrend": [],
+      "monthlySpending": []
+    },
+    "settings": {
+      "theme": "dark",
+      "exportFormat": ["JSON", "CSV"]
+    }
   },
   {
     "name": "rohit",
     "email": "rohit@gmail.com",
-    "password": "rohit123"
+    "password": "rohit123",
+    "dashboard": {
+      "balance": {
+        "totalIncome": 45000,
+        "totalExpenses": 22000,
+        "netBalance": 23000
+      },
+      "quickAddDefaults": {
+        "categories": ["Food", "Bills", "Travel", "Shopping", "Salary"],
+        "lastUsedDate": "2025-08-01"
+      },
+      "miniCharts": {
+        "incomeVsExpense": {
+          "income": 45000,
+          "expense": 22000
+        },
+        "recentTransactions": [2500, 3000, 1200, 2000, 1000, 5000, 1800]
+      }
+    },
+    "transactions": [
+      {
+        "date": "2025-08-01",
+        "description": "Salary",
+        "category": "Salary",
+        "amount": 45000
+      },
+      {
+        "date": "2025-08-03",
+        "description": "Electricity Bill",
+        "category": "Bills",
+        "amount": -3000
+      }
+    ],
+    "budgets": {
+      "Food": 7000,
+      "Bills": 5000,
+      "Travel": 6000,
+      "Shopping": 5000
+    },
+    "reports": {
+      "categoryBreakdown": {},
+      "netWorthTrend": [],
+      "monthlySpending": []
+    },
+    "settings": {
+      "theme": "light",
+      "exportFormat": ["JSON", "CSV"]
+    }
+  },
+  {
+    "name": "devanand",
+    "email": "dev@gmail.com",
+    "password": "dev@1234#",
+    "dashboard": {
+      "balance": {
+        "totalIncome": 60000,
+        "totalExpenses": 25000,
+        "netBalance": 35000
+      },
+      "quickAddDefaults": {
+        "categories": ["Food", "Rent", "Investment", "Travel", "Salary"],
+        "lastUsedDate": "2025-08-01"
+      },
+      "miniCharts": {
+        "incomeVsExpense": {
+          "income": 60000,
+          "expense": 25000
+        },
+        "recentTransactions": [3000, 4000, 2000, 5000, 3500, 4500, 2500]
+      }
+    },
+    "transactions": [
+      {
+        "date": "2025-08-01",
+        "description": "Salary",
+        "category": "Salary",
+        "amount": 60000
+      },
+      {
+        "date": "2025-08-04",
+        "description": "Mutual Funds",
+        "category": "Investment",
+        "amount": -5000
+      }
+    ],
+    "budgets": {
+      "Food": 9000,
+      "Rent": 15000,
+      "Investment": 10000,
+      "Travel": 6000
+    },
+    "reports": {
+      "categoryBreakdown": {},
+      "netWorthTrend": [],
+      "monthlySpending": []
+    },
+    "settings": {
+      "theme": "dark",
+      "exportFormat": ["JSON", "CSV"]
+    }
+  },
+  {
+    "name": "srushtee",
+    "email": "sru@gmail.com",
+    "password": "sru@123",
+    "dashboard": {
+      "balance": {
+        "totalIncome": 40000,
+        "totalExpenses": 15000,
+        "netBalance": 25000
+      },
+      "quickAddDefaults": {
+        "categories": ["Food", "Bills", "Travel", "Entertainment", "Salary"],
+        "lastUsedDate": "2025-08-01"
+      },
+      "miniCharts": {
+        "incomeVsExpense": {
+          "income": 40000,
+          "expense": 15000
+        },
+        "recentTransactions": [2000, 1500, 1000, 1200, 3000, 1800, 900]
+      }
+    },
+    "transactions": [
+      {
+        "date": "2025-08-01",
+        "description": "Salary",
+        "category": "Salary",
+        "amount": 40000
+      },
+      {
+        "date": "2025-08-02",
+        "description": "Dinner Out",
+        "category": "Food",
+        "amount": -1200
+      }
+    ],
+    "budgets": {
+      "Food": 6000,
+      "Bills": 4000,
+      "Travel": 5000,
+      "Entertainment": 3000
+    },
+    "reports": {
+      "categoryBreakdown": {},
+      "netWorthTrend": [],
+      "monthlySpending": []
+    },
+    "settings": {
+      "theme": "light",
+      "exportFormat": ["JSON", "CSV"]
+    }
   }
 ]

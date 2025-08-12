@@ -1,8 +1,7 @@
-// client/src/pages/Login.jsx
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
-const API_BASE = "http://localhost:5000"; // change if needed
+const API_BASE = "http://localhost:5000";
 
 const Icon = ({ name, ...props }) => {
   if (typeof window.lucide === "undefined") return null;
@@ -36,14 +35,16 @@ export default function Login() {
       const res = await fetch(`${API_BASE}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: input.email.trim().toLowerCase(), password: input.password }),
+        body: JSON.stringify({ 
+          email: input.email.trim().toLowerCase(), 
+          password: input.password 
+        }),
       });
 
       const data = await res.json();
       if (res.ok) {
-        // Save user (without password) to localStorage for client-side state
         localStorage.setItem("user", JSON.stringify(data.user));
-        navigate("/dashboard"); // change route as needed
+        navigate("/dashboard");
       } else {
         setError(data.message || "Login failed");
       }
