@@ -5,9 +5,9 @@
     "password": "users@123",
     "dashboard": {
       "balance": {
-        "totalIncome": 50000,
-        "totalExpenses": 20000,
-        "netBalance": 30000
+        "totalIncome": 100000,
+        "totalExpenses": 81256,
+        "netBalance": 18744
       },
       "quickAddDefaults": {
         "categories": [
@@ -37,31 +37,39 @@
     },
     "transactions": [
       {
-        "date": "2025-08-02",
-        "description": "Groceries",
+        "id": 1760951270029,
+        "date": "2025-10-20",
+        "description": "Food",
         "category": "Food",
-        "amount": -2000
+        "amount": -15000
       },
       {
-        "id": 1755095128606,
-        "date": "2025-08-13",
+        "id": 1760951286057,
+        "date": "2025-10-20",
         "description": "Salary",
         "category": "Salary",
-        "amount": 50000
+        "amount": 100000
       },
       {
-        "id": 1755095141247,
-        "date": "2025-08-13",
-        "description": "Rent",
-        "category": "Rent",
-        "amount": -3000
+        "id": 1761248918205,
+        "date": "2025-10-24",
+        "description": "Food",
+        "category": "Food",
+        "amount": -65656
       },
       {
-        "id": 1755095624030,
-        "date": "2025-08-13",
-        "description": "Travel",
-        "category": "Travel",
-        "amount": -1200
+        "id": 1761309422093,
+        "date": "2025-10-24",
+        "description": "Food",
+        "category": "Food",
+        "amount": -100
+      },
+      {
+        "id": 1761309442586,
+        "date": "2025-10-24",
+        "description": "Food",
+        "category": "Food",
+        "amount": -500
       }
     ],
     "budgets": {
@@ -173,8 +181,8 @@
     "dashboard": {
       "balance": {
         "totalIncome": 60000,
-        "totalExpenses": 20000,
-        "netBalance": 40000
+        "totalExpenses": 21600,
+        "netBalance": 38400
       },
       "quickAddDefaults": {
         "categories": [
@@ -221,6 +229,13 @@
         "description": "Rent",
         "category": "Rent",
         "amount": -15000
+      },
+      {
+        "id": 1761312884980,
+        "date": "2025-10-24",
+        "description": "Rent",
+        "category": "Rent",
+        "amount": -1600
       }
     ],
     "budgets": {

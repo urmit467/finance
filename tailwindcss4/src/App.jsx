@@ -26,7 +26,7 @@ function App() {
       element: <Dashboard />,
     },
     {
-      path: '/budget-planner',
+      path: '/planner',
       element: <BudgetPlanner />,
     }
   ]);
