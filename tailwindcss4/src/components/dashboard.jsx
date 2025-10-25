@@ -267,7 +267,7 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-[#000d1a] py-10">
-      <div className="w-full">
+      <div className="w-full mx-5">
         {/* HEADER WITH DISTINCT BACKGROUND */}
         <header className="mb-8 bg-[#000d1a] text-white p-7">
           <div className="flex items-center justify-between">
@@ -316,11 +316,11 @@ export default function Dashboard() {
           </div>
         </header>
 
-        <main className="flex flex-col gap-8 ml-2 mr-2">
-          {/* TOP ROW - Chart and Quick Add in flex container */}
-          <div className="flex flex-col lg:flex-row gap-8 ml-30">
+        <main className="flex flex-col lg:flex-row gap-8">
+          {/* LEFT COLUMN - Chart and Quick Add (1/3 width) */}
+          <div className="lg:w-1/3 flex flex-col gap-8">
             {/* Chart Section */}
-            <section className="lg:w-1/2">
+            <section>
               <motion.div
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -339,7 +339,7 @@ export default function Dashboard() {
                   <div className="p-4 rounded-xl bg-gradient-to-br from-emerald-50 to-white border border-emerald-100 shadow">
                     <p className="text-sm text-gray-600 mb-1">Income</p>
                     <p className="text-xl font-bold text-emerald-700 flex items-center gap-2">
-                      <ArrowUpIcon className="h-5 w-5 ml-3" />
+                      <ArrowUpIcon className="h-5 w-5 ml-11" />
                       {currency(balance.totalIncome)}
                     </p>
                   </div>
@@ -347,7 +347,7 @@ export default function Dashboard() {
                   <div className="p-4 rounded-xl bg-gradient-to-br from-rose-50 to-white border border-rose-100 shadow">
                     <p className="text-sm text-gray-600 mb-1">Expenses</p>
                     <p className="text-xl font-bold text-rose-600 flex items-center gap-2">
-                      <ArrowDownIcon className="h-5 w-5" />
+                      <ArrowDownIcon className="h-5 ml-11  w-5" />
                       {currency(balance.totalExpenses)}
                     </p>
                   </div>
@@ -375,7 +375,7 @@ export default function Dashboard() {
             </section>
 
             {/* Quick Add Section */}
-            <section className="lg:w-120 px-4">
+            <section>
               <motion.form
                 onSubmit={handleAddTransaction}
                 initial={{ opacity: 0, y: 8 }}
@@ -412,7 +412,7 @@ export default function Dashboard() {
                         step="0.01"
                         min="0"
                         placeholder="0.00"
-                        className="pl-11 pr-4   py-3 block w-100 ml-10 text-center rounded-xl border border-gray-300 text- focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-transparent transition-all"
+                        className="pl-11 pr-4 py-3 block w-full rounded-xl border border-gray-300 text-center focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-transparent transition-all"
                         aria-label="Amount"
                       />
                     </div>
@@ -427,7 +427,7 @@ export default function Dashboard() {
                       name="category"
                       value={quickAdd.category}
                       onChange={handleQuickAddChange}
-                      className="block w-100 ml-10 rounded-xl border border-gray-300 px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-transparent transition-all"
+                      className="block w-full rounded-xl border border-gray-300 px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-transparent transition-all"
                       aria-label="Category"
                     >
                       <option value="">Select Category</option>
@@ -442,15 +442,14 @@ export default function Dashboard() {
                   {/* Date */}
                   <div>
                     <label className="block text-base font-medium text-gray-700 mb-2">
-                      
-                    Date
+                      Date
                     </label>
                     <input
                       name="date"
                       type="date"
                       value={quickAdd.date}
                       onChange={handleQuickAddChange}
-                      className="block w-100 ml-10 rounded-xl border border-gray-300 px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-transparent transition-all"
+                      className="block w-full rounded-xl border border-gray-300 px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-transparent transition-all"
                       aria-label="Date"
                     />
                   </div>
@@ -460,7 +459,7 @@ export default function Dashboard() {
                 <div className="mt-6">
                   <button
                     type="submit"
-                    className="w-100 ml-10 mb-13 inline-flex items-center justify-center gap-3 rounded-xl bg-blue-600 text-white px-5 py-3 text-base font-bold shadow-lg hover:bg-blue-700 transition-all duration-150"
+                    className="w-full inline-flex items-center justify-center gap-3 rounded-xl bg-blue-600 text-white px-5 py-3 text-base font-bold shadow-lg hover:bg-blue-700 transition-all duration-150"
                   >
                     <PlusIcon className="h-5 w-5" />
                     Add Transaction
@@ -470,9 +469,9 @@ export default function Dashboard() {
             </section>
           </div>
 
-          {/* BOTTOM ROW - Transactions */}
-          <section className="w-350 ml-10 mb-10">
-            <div className="relative bg-[#3e5c76] rounded-2xl  p-6 md:p-8 shadow-xl border border-gray-100 pb-24">
+          {/* RIGHT COLUMN - Transactions (2/3 width) */}
+          <section className="lg:w-230 mb-10">
+            <div className="relative bg-[#3e5c76] rounded-2xl p-6 md:p-8 shadow-xl border border-gray-100 pb-24">
               {/* Top controls */}
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 <div className="flex items-center gap-4 w-full">
@@ -482,10 +481,10 @@ export default function Dashboard() {
                       value={query}
                       onChange={(e) => setQuery(e.target.value)}
                       placeholder="Search transactions, category, date..."
-                      className="pl-12 pr-4 py-3 bg-white text-center rounded-lg border border-gray-300 text-base w-150 ml-30 focus:outline-none focus:ring-2 focus:ring-sky-300 "
+                      className="pl-12 pr-4 py-3 bg-white rounded-lg border border-gray-300 text-base w-full focus:outline-none focus:ring-2 focus:ring-sky-300"
                     />
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                      <MagnifyingGlassIcon className="h-5 w-5 text-gray-500 ml-30" />
+                      <MagnifyingGlassIcon className="h-5 w-5 text-gray-500" />
                     </div>
                   </div>
 
@@ -516,14 +515,14 @@ export default function Dashboard() {
               </div>
 
               {/* Table - fixed-height scroll area (shows ~10 rows), header sticky */}
-              <div className="overflow-hidden w-300 ml-25 mb-5 rounded-xl border border-gray-200 shadow-sm mt-4 bg-white">
+              <div className="overflow-hidden rounded-xl border border-gray-200 shadow-sm mt-4 bg-white">
                 {/* FIXED height for visible rows, scrollable overflow-y */}
                 <div className="h-[560px] overflow-y-auto">
-                  <table className="min-w-full table-auto text-base ">
-                    <thead className="bg-gray-50 sticky top-0 z-10 ">
+                  <table className="min-w-full table-auto text-base">
+                    <thead className="bg-gray-50 sticky top-0 z-10">
                       <tr>
                         <th className="px-6 py-4 text-left font-semibold text-gray-700 uppercase tracking-wider">
-                          &nbsp;Date
+                          Date
                         </th>
                         <th className="px-6 py-4 text-left font-semibold text-gray-700 uppercase tracking-wider">
                           Description
@@ -546,7 +545,7 @@ export default function Dashboard() {
                             className="hover:bg-blue-50 transition-colors"
                           >
                             <td className="px-6 py-3 whitespace-nowrap text-gray-600">
-                             &nbsp; {dayjs(t.date).format("LL")}
+                              {dayjs(t.date).format("LL")}
                             </td>
 
                             <td className="px-6 py-3 text-gray-900 font-medium">
@@ -577,7 +576,7 @@ export default function Dashboard() {
                                 className="inline-flex items-center gap-2 text-rose-600 hover:text-rose-700 font-medium"
                               >
                                 <TrashIcon className="h-5 w-5" />
-                                <span>Delete&nbsp; </span>
+                                <span>Delete</span>
                               </button>
                             </td>
                           </tr>
@@ -604,15 +603,15 @@ export default function Dashboard() {
               </div>
 
               {/* Footer (absolute) */}
-              <div className="absolute inset-x-0 bottom-145 ml-230 flex items-center justify-between px-6 text-base text-gray-100">
-                <div className="font-medium">
-                  Showing{" "}
-                  <span className="text-blue-200">
-                    {filteredTransactions.length}
-                  </span>{" "}
-                  transactions
-                </div>
-
+              <div className="absolute inset-x-0 bottom-0 flex items-center justify-between px-6 py-4 text-base text-gray-100"></div>
+            </div>
+            <div className="absolute h-8 w-230 bg-white text-center right-10 mt-10 roundedfull">
+              <div className="font-medium text-base">
+                Total Transactions - {" "}
+                <span className="text-red-700 ">
+                  {filteredTransactions.length}
+                </span>{" "}
+              
               </div>
             </div>
           </section>
