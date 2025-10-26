@@ -266,14 +266,14 @@ export default function Dashboard() {
   if (!localStorage.getItem("user")) return null;
 
   return (
-    <div className="min-h-screen bg-[#000d1a] py-10">
-      <div className="w-full mx-5">
+    <div className="min-h-300 bg-[#F2F0FF] py-10">
+      <div className="w-full ">
         {/* HEADER WITH DISTINCT BACKGROUND */}
-        <header className="mb-8 bg-[#000d1a] text-white p-7">
+        <header className="mb-8 bg-[#F2F0FF] text-black p-7">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-5">
-              <div className="p-3 flex items-center gap-4">
-                <CurrencyRupeeIcon className="h-8 w-8 text-white" />
+            <div className="flex items-center  gap-5">
+              <div className="p-3 flex ml-2 items-center gap-4">
+                <CurrencyRupeeIcon className="h-8 w-8 text-black" />
                 <div className="w-45">
                   <h1 className="text-3xl font-bold">FinanceR</h1>
                   <p className="text-sm opacity-90">
@@ -284,16 +284,9 @@ export default function Dashboard() {
             </div>
 
             <div className="flex items-center gap-4">
-              <div className="items- flex-col ml-4">
-                <span className="text-xl font-bold ml-100 text-white">
-                  HELLO{" "}
-                </span>
-                <span className="text-xl font-bold">
-                  {storedUser.name.toUpperCase() || "You"}
-                </span>
-              </div>
+              <div className="items- flex-col ml-4"></div>
               <button
-                className="p-3 rounded-xl bg-white text-black w-17 cursor-pointer hover:bg-white/30 transition-all"
+                className="p-3 rounded-xl bg-[#245F73] text-white w-17 cursor-pointer hover:bg-white/30 transition-all"
                 onClick={handleclickplanner}
               >
                 Planner
@@ -302,23 +295,27 @@ export default function Dashboard() {
                 title="Settings"
                 className="p-3 rounded-xl bg-white/20 hover:bg-white/30 transition-all"
               >
-                <Cog6ToothIcon className="h-6 w-6 text-white" />
+                <Cog6ToothIcon className="h-6 w-6 text-black" />
               </button>
-
-              <button
-                onClick={handleLogout}
-                className="mr-3 w-22 inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-white/20 text-base font-medium hover:bg-white/30 transition-all"
-              >
-                <ArrowRightOnRectangleIcon className="h-5 w-5" />
-                Logout
-              </button>
+              <div className="flex flex-col">
+                <span className="text-xl text-black font-bold">
+                  {storedUser.name.toUpperCase() || "You"}
+                </span>
+                <button
+                  onClick={handleLogout}
+                  className="mr-3 w-22 inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-white/20 text-base font-medium hover:bg-white/30 transition-all"
+                >
+                  <ArrowRightOnRectangleIcon className="h-5 w-5" />
+                  Logout
+                </button>
+              </div>
             </div>
           </div>
         </header>
 
         <main className="flex flex-col lg:flex-row gap-8">
           {/* LEFT COLUMN - Chart and Quick Add (1/3 width) */}
-          <div className="lg:w-1/3 flex flex-col gap-8">
+          <div className="lg:w-1/3 ml-10 flex flex-col gap-8">
             {/* Chart Section */}
             <section>
               <motion.div
@@ -476,12 +473,12 @@ export default function Dashboard() {
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 <div className="flex items-center gap-4 w-full">
                   {/* Search */}
-                  <div className="relative flex-1">
+                  <div className="relative flex-1 ml-3">
                     <input
                       value={query}
                       onChange={(e) => setQuery(e.target.value)}
                       placeholder="Search transactions, category, date..."
-                      className="pl-12 pr-4 py-3 bg-white rounded-lg border border-gray-300 text-base w-full focus:outline-none focus:ring-2 focus:ring-sky-300"
+                      className="pl-12 pr-4 text-center py-3 bg-white rounded-lg border border-gray-300 text-base w-full focus:outline-none focus:ring-2 focus:ring-sky-300"
                     />
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                       <MagnifyingGlassIcon className="h-5 w-5 text-gray-500" />
@@ -515,10 +512,10 @@ export default function Dashboard() {
               </div>
 
               {/* Table - fixed-height scroll area (shows ~10 rows), header sticky */}
-              <div className="overflow-hidden rounded-xl border border-gray-200 shadow-sm mt-4 bg-white">
+              <div className="overflow-hidden  border border-gray-200 shadow-sm mt-4 bg-white">
                 {/* FIXED height for visible rows, scrollable overflow-y */}
-                <div className="h-[560px] overflow-y-auto">
-                  <table className="min-w-full table-auto text-base">
+                <div className="h-[560px] w-270  overflow-y-auto">
+                  <table className="min-w-250 ml-10  table-auto text-base">
                     <thead className="bg-gray-50 sticky top-0 z-10">
                       <tr>
                         <th className="px-6 py-4 text-left font-semibold text-gray-700 uppercase tracking-wider">
@@ -553,7 +550,7 @@ export default function Dashboard() {
                             </td>
 
                             <td className="px-6 py-3">
-                              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-blue-100 text-blue-800">
+                              <span className="inline-flex w-25 items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-blue-100 text-blue-800">
                                 <span className="w-3 h-3 rounded-full bg-blue-500 inline-block" />
                                 {t.category}
                               </span>
@@ -605,13 +602,12 @@ export default function Dashboard() {
               {/* Footer (absolute) */}
               <div className="absolute inset-x-0 bottom-0 flex items-center justify-between px-6 py-4 text-base text-gray-100"></div>
             </div>
-            <div className="absolute h-8 w-230 bg-white text-center right-10 mt-10 roundedfull">
-              <div className="font-medium text-base">
-                Total Transactions - {" "}
-                <span className="text-red-700 ">
+            <div className="absolute h-8 w-220 bg-[#245F73] text-center right-10 mt-10 rounded-full">
+              <div className="font-medium text-base mt-1 textF-white">
+                Total Transactions -{" "}
+                <span className="text-white ">
                   {filteredTransactions.length}
                 </span>{" "}
-              
               </div>
             </div>
           </section>

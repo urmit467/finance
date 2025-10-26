@@ -122,9 +122,7 @@ export default function Login() {
                     label="enter password"
                     variant="outlined"
                   />
-                  <input
-                   
-                  />
+          
                   <button
                     type="button"
                     onClick={() => setVisible((v) => !v)}
