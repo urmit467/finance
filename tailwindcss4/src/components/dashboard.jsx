@@ -143,7 +143,7 @@ export default function Dashboard() {
         datasets: [
           {
             data: [totalIncome, totalExpenses],
-            backgroundColor: ["#ffffffff", "#ef4444"],
+            backgroundColor: ["#4ade80", "#f87171"],
             borderWidth: 0,
             cutout: "60%",
             hoverOffset: 8,
@@ -159,7 +159,7 @@ export default function Dashboard() {
               boxWidth: 10,
               padding: 16,
               font: { size: 12 },
-              color: "#ffffff",
+              color: "#000000",
             },
           },
           tooltip: {
@@ -266,17 +266,17 @@ export default function Dashboard() {
   if (!localStorage.getItem("user")) return null;
 
   return (
-    <div className="min-h-300 bg-[#F2F0FF] py-10">
-      <div className="w-full ">
-        {/* HEADER WITH DISTINCT BACKGROUND */}
-        <header className="mb-8 bg-[#F2F0FF] text-black p-7">
+    <div className="min-h-screen bg-gray-50 py-8">
+      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
+        {/* HEADER */}
+        <header className="mb-8 bg-white rounded-2xl shadow-sm p-6">
           <div className="flex items-center justify-between">
-            <div className="flex items-center  gap-5">
-              <div className="p-3 flex ml-2 items-center gap-4">
+            <div className="flex items-center gap-4">
+              <div className="p-3 flex items-center gap-4">
                 <CurrencyRupeeIcon className="h-8 w-8 text-black" />
-                <div className="w-45">
-                  <h1 className="text-3xl font-bold">FinanceR</h1>
-                  <p className="text-sm opacity-90">
+                <div>
+                  <h1 className="text-3xl font-bold text-black">FinanceR</h1>
+                  <p className="text-sm text-gray-600">
                     Smart budgeting & quick entries
                   </p>
                 </div>
@@ -284,28 +284,27 @@ export default function Dashboard() {
             </div>
 
             <div className="flex items-center gap-4">
-              <div className="items- flex-col ml-4"></div>
               <button
-                className="p-3 rounded-xl bg-[#245F73] text-white w-17 cursor-pointer hover:bg-white/30 transition-all"
+                className="px-6 py-3 rounded-xl bg-gray-800 text-white cursor-pointer hover:bg-gray-700 transition-all"
                 onClick={handleclickplanner}
               >
                 Planner
               </button>
               <button
                 title="Settings"
-                className="p-3 rounded-xl bg-white/20 hover:bg-white/30 transition-all"
+                className="p-3 rounded-xl bg-gray-100 hover:bg-gray-200 transition-all"
               >
                 <Cog6ToothIcon className="h-6 w-6 text-black" />
               </button>
-              <div className="flex flex-col">
-                <span className="text-xl text-black font-bold">
+              <div className="flex flex-col items-end">
+                <span className="text-lg text-black font-bold">
                   {storedUser.name.toUpperCase() || "You"}
                 </span>
                 <button
                   onClick={handleLogout}
-                  className="mr-3 w-22 inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-white/20 text-base font-medium hover:bg-white/30 transition-all"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-100 text-sm font-medium hover:bg-gray-200 transition-all"
                 >
-                  <ArrowRightOnRectangleIcon className="h-5 w-5" />
+                  <ArrowRightOnRectangleIcon className="h-4 w-4" />
                   Logout
                 </button>
               </div>
@@ -313,49 +312,49 @@ export default function Dashboard() {
           </div>
         </header>
 
-        <main className="flex flex-col lg:flex-row gap-8">
-          {/* LEFT COLUMN - Chart and Quick Add (1/3 width) */}
-          <div className="lg:w-1/3 ml-10 flex flex-col gap-8">
+        <main className="flex flex-col flex-row gap-8">
+          {/* LEFT COLUMN - Chart and Quick Add */}
+          <div className="w-3/5 p-5 ml-10  flex flex-col gap-8">
             {/* Chart Section */}
-            <section>
+            <section className="flex-1">
               <motion.div
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-[#3e5c76] border border-[#3e5c76] rounded-2xl shadow-xl border border-gray-100 h-full"
+                className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 h-full"
               >
-                <div className="flex items-center justify-between mb-6 m-3">
-                  <h2 className="text-xl font-bold text-white">
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-xl font-bold text-black">
                     Financial Overview
                   </h2>
-                  <div className="text-sm text-white">
+                  <div className="text-sm text-gray-600">
                     Updated: {dayjs().format("LL")}
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center mb-6 ml-2 mr-3">
-                  <div className="p-4 rounded-xl bg-gradient-to-br from-emerald-50 to-white border border-emerald-100 shadow">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center mb-6">
+                  <div className="p-4 rounded-xl bg-gray-50 border border-gray-200">
                     <p className="text-sm text-gray-600 mb-1">Income</p>
-                    <p className="text-xl font-bold text-emerald-700 flex items-center gap-2">
-                      <ArrowUpIcon className="h-5 w-5 ml-11" />
+                    <p className="text-xl font-bold text-gray-800 flex items-center justify-center gap-2">
+                      <ArrowUpIcon className="h-5 w-5" />
                       {currency(balance.totalIncome)}
                     </p>
                   </div>
 
-                  <div className="p-4 rounded-xl bg-gradient-to-br from-rose-50 to-white border border-rose-100 shadow">
+                  <div className="p-4 rounded-xl bg-gray-50 border border-gray-200">
                     <p className="text-sm text-gray-600 mb-1">Expenses</p>
-                    <p className="text-xl font-bold text-rose-600 flex items-center gap-2">
-                      <ArrowDownIcon className="h-5 ml-11  w-5" />
+                    <p className="text-xl font-bold text-gray-800 flex items-center justify-center gap-2">
+                      <ArrowDownIcon className="h-5 w-5" />
                       {currency(balance.totalExpenses)}
                     </p>
                   </div>
 
-                  <div className="p-4 rounded-xl bg-gradient-to-br from-sky-50 to-white border border-sky-100 shadow">
+                  <div className="p-4 rounded-xl bg-gray-50 border border-gray-200">
                     <p className="text-sm text-gray-600 mb-1">Net Balance</p>
                     <p
                       className={`text-xl font-bold ${
                         balance.netBalance >= 0
-                          ? "text-sky-700"
-                          : "text-orange-600"
+                          ? "text-gray-800"
+                          : "text-gray-800"
                       }`}
                     >
                       {currency(balance.netBalance)}
@@ -370,28 +369,27 @@ export default function Dashboard() {
                 </div>
               </motion.div>
             </section>
+          </div>
 
-            {/* Quick Add Section */}
+          {/* RIGHT COLUMN - Quick Add */}
+          <div className="lg:w-1/3">
             <section>
               <motion.form
                 onSubmit={handleAddTransaction}
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-white rounded-2xl p-6 md:p-8 shadow-xl border border-gray-100 h-full flex flex-col"
+                className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 h-full flex flex-col"
               >
-                {/* Header */}
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="text-xl font-bold text-gray-800">
                     Quick Transaction
                   </h3>
-                  <div className="text-sm  text-gray-500 font-medium">
+                  <div className="text-sm text-gray-500 font-medium">
                     Fast entry
                   </div>
                 </div>
 
-                {/* Fields */}
                 <div className="flex-1 space-y-5">
-                  {/* Amount */}
                   <div>
                     <label className="block text-base font-medium text-gray-700 mb-2">
                       Amount
@@ -400,7 +398,6 @@ export default function Dashboard() {
                       <div className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
                         <CurrencyRupeeIcon className="h-5 w-5 text-gray-500" />
                       </div>
-
                       <input
                         name="amount"
                         value={quickAdd.amount}
@@ -409,13 +406,12 @@ export default function Dashboard() {
                         step="0.01"
                         min="0"
                         placeholder="0.00"
-                        className="pl-11 pr-4 py-3 block w-full rounded-xl border border-gray-300 text-center focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-transparent transition-all"
+                        className="pl-11 pr-4 py-3 block w-full rounded-xl border border-gray-300 text-center focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all"
                         aria-label="Amount"
                       />
                     </div>
                   </div>
 
-                  {/* Category */}
                   <div>
                     <label className="block text-base font-medium text-gray-700 mb-2">
                       Category
@@ -424,7 +420,7 @@ export default function Dashboard() {
                       name="category"
                       value={quickAdd.category}
                       onChange={handleQuickAddChange}
-                      className="block w-full rounded-xl border border-gray-300 px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-transparent transition-all"
+                      className="block w-full rounded-xl border border-gray-300 px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all"
                       aria-label="Category"
                     >
                       <option value="">Select Category</option>
@@ -436,7 +432,6 @@ export default function Dashboard() {
                     </select>
                   </div>
 
-                  {/* Date */}
                   <div>
                     <label className="block text-base font-medium text-gray-700 mb-2">
                       Date
@@ -446,17 +441,16 @@ export default function Dashboard() {
                       type="date"
                       value={quickAdd.date}
                       onChange={handleQuickAddChange}
-                      className="block w-full rounded-xl border border-gray-300 px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-transparent transition-all"
+                      className="block w-full rounded-xl border border-gray-300 px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent transition-all"
                       aria-label="Date"
                     />
                   </div>
                 </div>
 
-                {/* Button */}
-                <div className="mt-6">
+                <div className="mt-6 flex justify-center">
                   <button
                     type="submit"
-                    className="w-full inline-flex items-center justify-center gap-3 rounded-xl bg-blue-600 text-white px-5 py-3 text-base font-bold shadow-lg hover:bg-blue-700 transition-all duration-150"
+                    className="w-full max-w-xs inline-flex items-center justify-center gap-3 rounded-xl bg-gray-800 text-white px-5 py-3 text-base font-bold shadow-sm hover:bg-gray-700 transition-all duration-150"
                   >
                     <PlusIcon className="h-5 w-5" />
                     Add Transaction
@@ -464,154 +458,150 @@ export default function Dashboard() {
                 </div>
               </motion.form>
             </section>
+            <div className="bg-white shadow-sm h-10 flex justify-center items-center mt-8 rounded-2xl ">
+              <div className="text-lg text-center align-center text-gray-600">
+                Total Transactions -{" "}
+                <span className="font-semibold">
+                  {filteredTransactions.length}
+                </span>
+              </div>
+            </div>
           </div>
+        </main>
 
-          {/* RIGHT COLUMN - Transactions (2/3 width) */}
-          <section className="lg:w-230 mb-10">
-            <div className="relative bg-[#3e5c76] rounded-2xl p-6 md:p-8 shadow-xl border border-gray-100 pb-24">
-              {/* Top controls */}
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                <div className="flex items-center gap-4 w-full">
-                  {/* Search */}
-                  <div className="relative flex-1 ml-3">
-                    <input
-                      value={query}
-                      onChange={(e) => setQuery(e.target.value)}
-                      placeholder="Search transactions, category, date..."
-                      className="pl-12 pr-4 text-center py-3 bg-white rounded-lg border border-gray-300 text-base w-full focus:outline-none focus:ring-2 focus:ring-sky-300"
-                    />
-                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                      <MagnifyingGlassIcon className="h-5 w-5 text-gray-500" />
-                    </div>
+        {/* TRANSACTIONS SECTION */}
+        <section className="mt-8">
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
+            {/* Top controls */}
+            <div className="flex flex-col  md:flex-row md:items-center md:justify-between gap-4 mb-6">
+              <div className="flex items-center gap-4 w-full md:w-auto">
+                {/* Search */}
+                <div className="relative flex-1 mt-2 ml-2 w-100">
+                  <input
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                    placeholder="Search transactions, category, date..."
+                    className="pl-12 pr-4  text-center py-3 bg-white rounded-lg border border-gray-300 text-base w-full focus:outline-none focus:ring-2 focus:ring-gray-400"
+                  />
+                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <MagnifyingGlassIcon className="h-5 w-5 text-gray-500" />
                   </div>
-
-                  {/* Category */}
-                  <select
-                    value={categoryFilter}
-                    onChange={(e) => setCategoryFilter(e.target.value)}
-                    className="rounded-lg border border-gray-300 bg-white px-4 py-3 text-base min-w-[160px]"
-                  >
-                    <option value="All Categories">All Categories</option>
-                    {categories.map((c) => (
-                      <option key={c} value={c}>
-                        {c}
-                      </option>
-                    ))}
-                  </select>
                 </div>
 
-                {/* Actions */}
-                <div className="flex items-center gap-4">
-                  <button
-                    onClick={handleClearAll}
-                    className="text-base font-medium text-white hover:text-rose-700 hover:underline"
-                  >
-                    Clear All
-                  </button>
-                </div>
+                {/* Category */}
+                <select
+                  value={categoryFilter}
+                  onChange={(e) => setCategoryFilter(e.target.value)}
+                  className="rounded-lg mt-2 border border-gray-300 bg-white px-4 py-3 text-base min-w-[160px]"
+                >
+                  <option value="All Categories">All Categories</option>
+                  {categories.map((c) => (
+                    <option key={c} value={c}>
+                      {c}
+                    </option>
+                  ))}
+                </select>
               </div>
 
-              {/* Table - fixed-height scroll area (shows ~10 rows), header sticky */}
-              <div className="overflow-hidden  border border-gray-200 shadow-sm mt-4 bg-white">
-                {/* FIXED height for visible rows, scrollable overflow-y */}
-                <div className="h-[560px] w-270  overflow-y-auto">
-                  <table className="min-w-250 ml-10  table-auto text-base">
-                    <thead className="bg-gray-50 sticky top-0 z-10">
-                      <tr>
-                        <th className="px-6 py-4 text-left font-semibold text-gray-700 uppercase tracking-wider">
-                          Date
-                        </th>
-                        <th className="px-6 py-4 text-left font-semibold text-gray-700 uppercase tracking-wider">
-                          Description
-                        </th>
-                        <th className="px-6 py-4 text-left font-semibold text-gray-700 uppercase tracking-wider">
-                          Category
-                        </th>
-                        <th className="px-6 py-4 text-right font-semibold text-gray-700 uppercase tracking-wider">
-                          Amount
-                        </th>
-                        <th className="px-6 py-4"></th>
-                      </tr>
-                    </thead>
+              {/* Actions */}
+              <div className="flex items-center gap-4">
+                <button
+                  onClick={handleClearAll}
+                  className="text-base font-medium text-gray-700 hover:text-red-600 hover:underline"
+                >
+                  Clear All
+                </button>
+              </div>
+            </div>
 
-                    <tbody className="bg-white divide-y divide-gray-100">
-                      {filteredTransactions.length > 0 ? (
-                        filteredTransactions.map((t) => (
-                          <tr
-                            key={t.id}
-                            className="hover:bg-blue-50 transition-colors"
-                          >
-                            <td className="px-6 py-3 whitespace-nowrap text-gray-600">
-                              {dayjs(t.date).format("LL")}
-                            </td>
+            {/* Table */}
+            <div className="overflow-hidden border border-gray-200 rounded-lg">
+              <div className="h-[560px] overflow-y-auto">
+                <table className="min-w-full table-auto text-base">
+                  <thead className="bg-gray-50 sticky top-0 z-10">
+                    <tr>
+                      <th className="px-6 py-4 text-left font-semibold text-gray-700 uppercase tracking-wider">
+                        Date
+                      </th>
+                      <th className="px-6 py-4 text-left font-semibold text-gray-700 uppercase tracking-wider">
+                        Description
+                      </th>
+                      <th className="px-6 py-4 text-left font-semibold text-gray-700 uppercase tracking-wider">
+                        Category
+                      </th>
+                      <th className="px-6 py-4 text-right font-semibold text-gray-700 uppercase tracking-wider">
+                        Amount
+                      </th>
+                      <th className="px-6 py-4"></th>
+                    </tr>
+                  </thead>
 
-                            <td className="px-6 py-3 text-gray-900 font-medium">
-                              {t.description}
-                            </td>
+                  <tbody className="bg-white divide-y divide-gray-200">
+                    {filteredTransactions.length > 0 ? (
+                      filteredTransactions.map((t) => (
+                        <tr
+                          key={t.id}
+                          className="hover:bg-gray-50 transition-colors"
+                        >
+                          <td className="px-6 py-3 whitespace-nowrap text-gray-600">
+                            {dayjs(t.date).format("LL")}
+                          </td>
 
-                            <td className="px-6 py-3">
-                              <span className="inline-flex w-25 items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-blue-100 text-blue-800">
-                                <span className="w-3 h-3 rounded-full bg-blue-500 inline-block" />
-                                {t.category}
-                              </span>
-                            </td>
+                          <td className="px-6 py-3 text-gray-900 font-medium">
+                            {t.description}
+                          </td>
 
-                            <td
-                              className={`px-6 py-3 whitespace-nowrap font-bold text-right ${
-                                t.amount > 0
-                                  ? "text-emerald-700"
-                                  : "text-rose-600"
-                              }`}
-                            >
-                              {t.amount > 0 ? "+" : "-"}{" "}
-                              {currency(Math.abs(t.amount))}
-                            </td>
+                          <td className="px-6 py-3">
+                            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-gray-100 text-gray-800">
+                              <span className="w-3 h-3 rounded-full bg-gray-500 inline-block" />
+                              {t.category}
+                            </span>
+                          </td>
 
-                            <td className="px-6 py-3 whitespace-nowrap text-right">
-                              <button
-                                onClick={() => handleDelete(t.id)}
-                                className="inline-flex items-center gap-2 text-rose-600 hover:text-rose-700 font-medium"
-                              >
-                                <TrashIcon className="h-5 w-5" />
-                                <span>Delete</span>
-                              </button>
-                            </td>
-                          </tr>
-                        ))
-                      ) : (
-                        <tr>
                           <td
-                            colSpan={5}
-                            className="px-6 py-12 text-center text-gray-500 text-lg"
+                            className={`px-6 py-3 whitespace-nowrap font-bold text-right ${
+                              t.amount > 0 ? "text-gray-800" : "text-gray-800"
+                            }`}
                           >
-                            <div className="flex flex-col items-center justify-center gap-3">
-                              <CurrencyRupeeIcon className="h-12 w-12 text-gray-300" />
-                              <p>No transactions found</p>
-                              <p className="text-sm text-gray-400">
-                                Use Quick Add to create your first transaction
-                              </p>
-                            </div>
+                            {t.amount > 0 ? "+" : "-"}{" "}
+                            {currency(Math.abs(t.amount))}
+                          </td>
+
+                          <td className="px-6 py-3 whitespace-nowrap text-right">
+                            <button
+                              onClick={() => handleDelete(t.id)}
+                              className="inline-flex items-center gap-2 text-red-600 hover:text-red-700 font-medium"
+                            >
+                              <TrashIcon className="h-5 w-5" />
+                              <span>Delete</span>
+                            </button>
                           </td>
                         </tr>
-                      )}
-                    </tbody>
-                  </table>
-                </div>
+                      ))
+                    ) : (
+                      <tr>
+                        <td
+                          colSpan={5}
+                          className="px-6 py-12 text-center text-gray-500 text-lg"
+                        >
+                          <div className="flex flex-col items-center justify-center gap-3">
+                            <CurrencyRupeeIcon className="h-12 w-12 text-gray-300" />
+                            <p>No transactions found</p>
+                            <p className="text-sm text-gray-400">
+                              Use Quick Add to create your first transaction
+                            </p>
+                          </div>
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
               </div>
+            </div>
 
-              {/* Footer (absolute) */}
-              <div className="absolute inset-x-0 bottom-0 flex items-center justify-between px-6 py-4 text-base text-gray-100"></div>
-            </div>
-            <div className="absolute h-8 w-220 bg-[#245F73] text-center right-10 mt-10 rounded-full">
-              <div className="font-medium text-base mt-1 textF-white">
-                Total Transactions -{" "}
-                <span className="text-white ">
-                  {filteredTransactions.length}
-                </span>{" "}
-              </div>
-            </div>
-          </section>
-        </main>
+            {/* Footer */}
+          </div>
+        </section>
       </div>
     </div>
   );
